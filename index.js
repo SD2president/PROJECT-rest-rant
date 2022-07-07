@@ -1,10 +1,10 @@
 //the .env file summon
-require('dotenv').config
+require('dotenv').config()
 
 //the express package 
 const express = require('express')
 const app = express()
-
+let port = process.env.PORT
 
 app.use('/places', require('./controllers/places'))
 
@@ -17,4 +17,6 @@ app.get('*', (req, res) => {
 })
 
 
-app.listen(process.env.PORT)
+app.listen(process.env.PORT,() => {
+    console.log(`its server of ${port} is up` )
+})
